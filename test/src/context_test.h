@@ -13,7 +13,20 @@ to_do:
     - test I/O operators
 */
 
-#include <lib/context/context.h>
+
+namespace om636
+{
+    namespace default_subject
+    {
+        template<class> struct policy;
+    }
+
+    template<class T, template<class> class U = default_subject::policy>
+    struct context;
+}
+
+#include <lib/context/src/interface.h>
+#include <lib/context/src/default_subject.h>
 
 namespace om636
 {
@@ -62,7 +75,7 @@ namespace om636
         // Check on_swap
         a = b;
         ASSERT( a.m_value == 7777 );
-        
+
         FOOTER;
     }
 
