@@ -17,7 +17,7 @@ int main(int argc, const char * argv[])
 {
     using namespace om636;
 	
-    mover m;
+    mover * m;
 
 	return 0;
 }
