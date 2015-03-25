@@ -1,7 +1,12 @@
 #ifndef DYNAMIC_BASE_H_JAKBOOWH667346
 	#define DYNAMIC_BASE_H_JAKBOOWH667346
 
-#include <lib/sense/src/observer.h>
+#include <lib/context/src/interface.h>
+#include <lib/context/src/default_subject.h>
+#include <lib/sense/src/subject.h>
+#include <lib/sense/src/observer/same_scope.h>
+
+
 // #include <vector>
 // #include "singleton.h"
 
@@ -32,10 +37,13 @@ namespace om636
 	template<class T> 
 	void swap(time_slice<T> &, time_slice<T> &);
 	
+	template<class T>
+	using dynamic_subject = basic_subject<T, const_observer>;
+
 	// dynamic_base 
 	template<class T> 
 	class dynamic_base
-		: public const_observer< T > 
+		: public same_scope< context< T, dynamic_subject > > 
 	{
 		dynamic_base(const dynamic_base &) = delete;
 		dynamic_base & operator=(dynamic_base) = delete;
@@ -43,16 +51,17 @@ namespace om636
 	public:
 	
 		// types
-		typedef T value_type;  
-		typedef const_observer< value_type > base_type; 
-		typedef typename base_type::context_type context_type; 
+		typedef T value_type;
+		typedef context< value_type, dynamic_subject > context_type;  
+		typedef same_scope< context_type > base_type; 
+		//typedef typename base_type::context_type context_type; 
 		
 		// resources
 		dynamic_base(context_type &); 
 		virtual ~dynamic_base() = default;
 		
 		// 
-		virtual void on_swap(const value_type &, const value_type &);
+		virtual void on_swap(const context_type &, const context_type &);
 		
 		const value_type & age();
 	

@@ -45,9 +45,9 @@ namespace om636
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T>
-	void dynamic_base<T>::on_swap(const value_type &, const value_type & current)
+	void dynamic_base<T>::on_swap(const context_type &, const context_type & current)
 	{	
-		m_age += current.value();	
+		m_age += current.value_ref().value();	
 	}
 
 }	// om636
