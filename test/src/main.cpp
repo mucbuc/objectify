@@ -15,9 +15,8 @@ void test_dynamic_base()
         mover(context_type & c)
         : base_type(c)
         , m_swapped()
-        {
-            std::cout << "ctor" << std::endl;
-        }
+        {}
+        
         virtual ~mover() = default;
         void on_swap(const context_type &, const context_type &)
         {
