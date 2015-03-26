@@ -14,14 +14,14 @@
 
 namespace om636
 {
-	typedef primitive<unsigned, unsigned> point_type;
-
 	template<class T>
 	struct frame_swap
 	{	
+		typedef primitive<unsigned, unsigned> point_type;
+
 		frame_swap() = default;
 		frame_swap(const frame_swap &) = default;
-		frame_swap & operator=(frame_swap) = default;
+		frame_swap & operator=(const frame_swap &) = default;
 
 		void swap(frame_swap &);
 	

@@ -2,7 +2,7 @@
 #include <plank/src/test.h>
 
 #include <lib/objectify/src/dynamic_base.h>
-#include <lib/objectify/src/dynamic_base.h>
+#include <lib/objectify/src/visual_base.h>
 
 void test_dynamic_base()
 {
@@ -41,5 +41,7 @@ int main(int argc, const char * argv[])
 {
     test_dynamic_base();
     
+    om636::frame_swap<unsigned> p;
+
 	return 0;
 }
