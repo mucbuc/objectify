@@ -2,6 +2,7 @@
 #include <plank/src/test.h>
 
 #include <lib/objectify/src/dynamic_base.h>
+#include <lib/objectify/src/dynamic_base.h>
 
 void test_dynamic_base()
 {
