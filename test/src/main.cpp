@@ -3,6 +3,7 @@
 
 #include <lib/objectify/src/dynamic_base.h>
 #include <lib/objectify/src/visual_base.h>
+#include <lib/objectify/src/receiver_base.h>
 
 void test_dynamic_base()
 {
@@ -39,9 +40,11 @@ void test_dynamic_base()
 
 int main(int argc, const char * argv[])
 {
+    using namespace om636;
+    
     test_dynamic_base();
     
-    om636::frame_swap<unsigned> p;
-
+    frame_swap<unsigned> p;
+    event_info<void> q(0, 0);
 	return 0;
 }

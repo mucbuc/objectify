@@ -11,7 +11,6 @@
 
 #include <lib/prima/src/primitive.h>
 
-
 namespace om636
 {
 	template<class T>

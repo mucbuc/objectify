@@ -6,10 +6,6 @@
 #include <lib/sense/src/subject.h>
 #include <lib/sense/src/observer/same_scope.h>
 
-
-// #include <vector>
-// #include "singleton.h"
-
 namespace om636
 {
 	// time_slice
