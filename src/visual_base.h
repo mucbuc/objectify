@@ -62,7 +62,7 @@ namespace om636
 		const value_type & frame_count() const;
 	
 	private:	
-		value_type m_frame_count;
+		unsigned m_frame_count;
 	};
    
 } // om636

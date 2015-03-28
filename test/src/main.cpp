@@ -1,40 +1,73 @@
 #include <iostream>
 #include <plank/src/test.h>
 
+#include <lib/context/src/interface.h>
+
 #include <lib/objectify/src/dynamic_base.h>
 #include <lib/objectify/src/visual_base.h>
 #include <lib/objectify/src/receiver_base.h>
 
+struct mover
+: om636::dynamic_base< om636::time_slice<double> >
+, om636::visual_base< om636::frame_swap<void> >
+, om636::receiver_base< om636::event_info<void> >
+{
+    typedef om636::dynamic_base< om636::time_slice<double> > dynamic_base_type;
+    typedef om636::visual_base< om636::frame_swap<void> > visual_base_type;
+    typedef om636::receiver_base< om636::event_info<void> > receiver_base_type;
+    
+    template<class T>
+    mover(T & c)
+        : dynamic_base_type(c)
+        , visual_base_type(c)
+        , receiver_base_type(c)
+        , m_animated()
+        , m_rendered()
+        , m_notified()
+    {}
+    
+    virtual ~mover() = default;
+    
+    void on_swap(const dynamic_base_type::context_type &, const dynamic_base_type::context_type &)
+    {
+        m_animated = true;
+    }
+
+    void on_swap(const visual_base_type::context_type &, const visual_base_type::context_type &)
+    {
+        m_rendered = true;
+    }
+
+    void on_swap(const receiver_base_type::context_type &, const receiver_base_type::context_type &)
+    {
+        m_notified = true;
+    }
+    
+    bool m_animated;
+    bool m_rendered;
+    bool m_notified;
+};
+
+struct Context
+: mover::dynamic_base_type::context_type
+, mover::visual_base_type::context_type
+, mover::receiver_base_type::context_type
+{
+    using mover::dynamic_base_type::context_type::operator=;
+    using mover::visual_base_type::context_type::operator=;
+    using mover::receiver_base_type::context_type::operator=;
+};
+
 void test_dynamic_base()
 {
-    struct mover
-    : om636::dynamic_base< om636::time_slice<double> >
-    {
-        typedef om636::dynamic_base< om636::time_slice<double> > base_type;
-        using typename base_type::value_type;
-        using typename base_type::context_type;
-        
-        mover(context_type & c)
-        : base_type(c)
-        , m_swapped()
-        {}
-        
-        virtual ~mover() = default;
-        void on_swap(const context_type &, const context_type &)
-        {
-            m_swapped = true;
-        }
-        
-        bool m_swapped;
-    };
-
     using namespace om636;
-    typename mover::context_type c;
+    Context c;
     mover m( c );
     
     c = time_slice<double>(1.9);
-    
-    ASSERT(m.m_swapped);
+    c = frame_swap<void>();
+    c = event_info<void>();
+    ASSERT(m.m_animated && m.m_rendered && m.m_notified);
     FOOTER;
 }
 

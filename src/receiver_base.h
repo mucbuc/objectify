@@ -39,7 +39,7 @@ namespace om636
 		typedef primitive<unsigned, unsigned, unsigned, unsigned> rect_type; 
 
 		// resources
-		event_info() = delete;
+		event_info() = default;
 		event_info(const event_info &) = default;
 		event_info & operator=(const event_info &) = default;
 		
@@ -47,6 +47,7 @@ namespace om636
 		event_info(const unsigned &, const unsigned &);		// key events 
 		void swap(event_info &);
 
+	private:
 		unsigned m_key_pressed, m_event_id;
 		point_type m_position;
 		bool m_touch_down;
@@ -54,6 +55,26 @@ namespace om636
 	
 	template<class T>
 	void swap(event_info<T> &, event_info<T> &);
+
+	// receiver_base 
+	template<class T> 
+	class receiver_base
+		: public same_scope< context< T, visual_subject > > 
+	{
+		receiver_base(const receiver_base &) = delete;
+		receiver_base & operator=(const receiver_base &) = delete;
+	
+	public:
+	
+		// types
+		typedef T value_type;
+		typedef context< value_type, visual_subject > context_type;  
+		typedef same_scope< context_type > base_type; 
+		
+		// resources
+		receiver_base(context_type &); 
+		virtual ~receiver_base() = default;
+	};
 
 } // om636
 	

@@ -31,7 +31,7 @@ namespace om636
 	template<class T>
 	visual_base<T>::visual_base(context_type & s)
 		: base_type( s )
-		, m_frame_count( 0 )
+		, m_frame_count()
 	{}
 		
 	/////////////////////////////////////////////////////////////////////////////////////////////
