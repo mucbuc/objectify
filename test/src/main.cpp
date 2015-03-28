@@ -66,7 +66,7 @@ void test_dynamic_base()
     
     c = time_slice<double>(1.9);
     c = frame_swap<void>();
-    c = event_info<void>();
+    c = event_info<void>(6, receiver::id_key_down );
     ASSERT(m.m_animated && m.m_rendered && m.m_notified);
     FOOTER;
 }
@@ -78,6 +78,6 @@ int main(int argc, const char * argv[])
     test_dynamic_base();
     
     frame_swap<unsigned> p;
-    event_info<void> q(0, 0);
+    event_info<void> q(0, receiver::id_key_down );
 	return 0;
 }

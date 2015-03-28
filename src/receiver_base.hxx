@@ -4,7 +4,7 @@ namespace om636
 	// event_info
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T>
-	event_info<T>::event_info(const point_type & p, const unsigned & event_id)
+	event_info<T>::event_info(const point_type & p, const event_type & event_id)
 		: m_position( p )
 		, m_event_id( event_id )
 		, m_touch_down( event_id == id_touch_down )
@@ -12,7 +12,7 @@ namespace om636
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	template<class T>
-	event_info<T>::event_info(const unsigned & p, const unsigned & event_id)
+	event_info<T>::event_info(const unsigned & p, const event_type & event_id)
 		: m_key_pressed( p )
 		, m_event_id( event_id )
 		, m_touch_down( false )
@@ -44,4 +44,61 @@ namespace om636
 	receiver_base<T>::receiver_base(context_type & s)
 		: base_type( s )
 	{}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	unsigned receiver_base<T>::key_pressed() const
+	{
+		return m_key_pressed;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	unsigned & receiver_base<T>::key_pressed()
+	{
+		return m_key_pressed;
+	} 
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	event_type receiver_base<T>::event_id() const
+	{
+		return m_event_id;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	event_type & receiver_base<T>::event_id()
+	{
+		return m_event_id;
+	} 
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	point_type receiver_base<T>::position() const
+	{
+		return m_position;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	point_type & receiver_base<T>::position()
+	{
+		return m_position;
+	} 
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	bool receiver_base<T>::touch_down() const
+	{
+		return m_touch_down;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	template<class T>
+	bool & receiver_base<T>::touch_down()
+	{
+		return m_touch_down;
+	} 
+
 }	// om636

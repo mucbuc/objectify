@@ -3,20 +3,18 @@
 
 #include <utility>
 
-// #include "context.h"
-// #include "object_base.h"
-// #include "observer.h"
-// #include "subject.h"
-// #include "number.h"
-
+#include <lib/context/src/default_subject.h>
+#include <lib/context/src/interface.h>
 #include <lib/prima/src/primitive.h>
+#include <lib/sense/src/observer/same_scope.h>
+#include <lib/sense/src/subject.h>
 
 namespace om636
 {
 	namespace receiver
 	{
 		// constants
-		enum 
+		typedef enum 
 		{
 			id_window_init,
 			id_window_close,
@@ -26,7 +24,7 @@ namespace om636
 			id_touch_up,
 			id_touch_move,
 			id_terminate
-		};
+		} event_type;
 	}
 	
 	using namespace receiver; 
@@ -43,12 +41,25 @@ namespace om636
 		event_info(const event_info &) = default;
 		event_info & operator=(const event_info &) = default;
 		
-		event_info(const point_type &, const unsigned &);	// touch events
-		event_info(const unsigned &, const unsigned &);		// key events 
+		event_info(const point_type &, const event_type &);	// touch events
+		event_info(const unsigned &, const event_type &);		// key events 
 		void swap(event_info &);
 
+		unsigned key_pressed() const;
+		unsigned & key_pressed(); 
+		
+		event_type event_id() const;
+		event_type & event_id(); 
+		
+		point_type position() const;
+		point_type & position(); 
+		
+		bool touch_down() const;
+		bool & touch_down(); 
+
 	private:
-		unsigned m_key_pressed, m_event_id;
+		unsigned m_key_pressed;
+		event_type m_event_id;
 		point_type m_position;
 		bool m_touch_down;
 	};
