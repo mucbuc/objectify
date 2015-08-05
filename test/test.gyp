@@ -1,6 +1,8 @@
 {
 	'includes':[
-		'lib/empty-plank/def.gypi',
+		'lib/sense/def.gypi',
+		'lib/traverse/def/base.gypi',
+		'lib/context/def.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/cpp11.gypi'
 	],#includes
