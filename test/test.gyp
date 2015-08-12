@@ -2,7 +2,7 @@
 	'includes':[
 		'lib/context/def.gypi',
 		'lib/sense/def.gypi',
-		'lib/traverse/def/base.gypi',
+		'lib/traverse/traverse.gypi',
 		'plank/def/mac-targets.gypi',
 		'plank/def/plank.gypi',
 	],#includes
