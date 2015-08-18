@@ -1,9 +1,6 @@
 {
 	'includes':[
-		'lib/context/def.gypi',
-		'lib/sense/def.gypi',
-		'lib/traverse/traverse.gypi',
-		'plank/def/mac-targets.gypi',
+		'lib/objectify/def.gypi',
 		'plank/def/plank.gypi',
 	],#includes
 	'target_defaults': {

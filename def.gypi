@@ -1,4 +1,8 @@
-{
+{	'includes':[
+		'../context/def.gypi',
+		'../sense/def.gypi',
+		'../traverse/traverse.gypi',
+	],
 	'target_defaults': {
 		'sources': [
 			'src/dynamic_base.h',
