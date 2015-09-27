@@ -27,10 +27,6 @@
 		{
 			"origin": "https://github.com/mucbuc/numbro.git",
 			"path": "test/lib"
-		},
-		{
-			"origin": "https://github.com/mucbuc/plank.git",
-			"path": "test/"
 		}
 	]
 }
