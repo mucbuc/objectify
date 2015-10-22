@@ -2,7 +2,7 @@
 	"import":[
 		"../context/def.json",
 		"../sense/def.json",
-		"../traverse/traverse.json",
+		"../traverse/traverse.json"
 	],
 	"sources": [
 		"src/dynamic_base.h",
@@ -10,6 +10,6 @@
 		"src/receiver_base.h",
 		"src/receiver_base.hxx",
 		"src/visual_base.h",
-		"src/visual_base.hxx",		
+		"src/visual_base.hxx"		
 	]
 }

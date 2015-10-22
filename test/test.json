@@ -1,8 +1,8 @@
 {
 	"import":[
-		"lib/objectify/def.json",
+		"lib/objectify/def.json"
 	],
 	"sources": [
-		"src/main.cpp",
+		"src/main.cpp"
 	]
 }
