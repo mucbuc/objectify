@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <plank/src/test.h>
 #include "test.h"
 
@@ -9,6 +10,5 @@ int main(int argc, const char * argv[])
 	run_math_test<void>();
 
 	run_matrix_test();
-	
 	return 0;
 }

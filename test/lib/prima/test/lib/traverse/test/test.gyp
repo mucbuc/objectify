@@ -1,7 +1,7 @@
 {
 	'includes':[
-		'lib/traverse/def/base.gypi',
-		'plank/def/mac-targets.gypi'
+		'lib/traverse/traverse.gypi',
+		'plank/def/plank.gypi',
 	],#inclues
 	'target_defaults': {
 		'target_name': 'test',
