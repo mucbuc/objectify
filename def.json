@@ -1,8 +1,8 @@
 {	
 	"import":[
-		"../context/def.json",
-		"../sense/def.json",
-		"../traverse/traverse.json"
+		"lib/context/def.json",
+		"lib/sense/def.json",
+		"lib/traverse/traverse.json"
 	],
 	"sources": [
 		"src/dynamic_base.h",
