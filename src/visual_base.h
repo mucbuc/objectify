@@ -1,30 +1,27 @@
 #ifndef VISUAL_BASE_H_433900700
 	#define VISUAL_BASE_H_433900700
 
-#include <lib/context/src/interface.h>
 #include <lib/context/src/default_subject.h>
-#include <lib/sense/src/subject.h>
+#include <lib/context/src/interface.h>
 #include <lib/sense/src/observer/same_scope.h>
-
-
-#include <tuple>
-
-#include <lib/prima/src/primitive.h>
+#include <lib/sense/src/subject.h>
 
 namespace om636
 {
 	template<class T>
 	struct frame_swap
 	{	
-		typedef primitive<unsigned, unsigned> point_type;
+		typedef T point_type;
 
-		frame_swap() = default;
+		frame_swap(point_type size);
+        
+        frame_swap() = default;
 		frame_swap(const frame_swap &) = default;
 		frame_swap & operator=(const frame_swap &) = default;
 
 		void swap(frame_swap &);
 	
-		point_type & size(); 
+		point_type & size();
 		const point_type & size() const; 
 		
 	private:
@@ -51,7 +48,7 @@ namespace om636
 		// types
 		typedef T value_type;
 		typedef context< value_type, visual_subject > context_type;  
-		typedef same_scope< context_type > base_type; 
+		typedef same_scope< context_type > base_type;
 		
 		// resources
 		visual_base(context_type &); 
