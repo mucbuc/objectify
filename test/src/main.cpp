@@ -1,19 +1,23 @@
 #include <iostream>
-#include <tmp/src/test.h>
+#include <tuple> 
+
+#include "test.h"
 
 #include <lib/context/src/interface.h>
-
 #include <lib/objectify/src/dynamic_base.h>
-#include <lib/objectify/src/visual_base.h>
 #include <lib/objectify/src/receiver_base.h>
+#include <lib/objectify/src/visual_base.h>
+#include <lib/prima/src/primitive.h>
+
+typedef om636::primitive< unsigned, unsigned > point_type; 
 
 struct mover
 : om636::dynamic_base< om636::time_slice<double> >
-, om636::visual_base< om636::frame_swap<void> >
+, om636::visual_base< om636::frame_swap<point_type> >
 , om636::receiver_base< om636::event_info<void> >
 {
     typedef om636::dynamic_base< om636::time_slice<double> > dynamic_base_type;
-    typedef om636::visual_base< om636::frame_swap<void> > visual_base_type;
+    typedef om636::visual_base< om636::frame_swap<point_type> > visual_base_type;
     typedef om636::receiver_base< om636::event_info<void> > receiver_base_type;
     
     template<class T>
@@ -65,7 +69,7 @@ void test_dynamic_base()
     mover m( c );
     
     c = time_slice<double>(1.9);
-    c = frame_swap<void>();
+    c = frame_swap< point_type >();
     c = event_info<void>(6, receiver::id_key_down );
     ASSERT(m.m_animated && m.m_rendered && m.m_notified);
     FOOTER;
