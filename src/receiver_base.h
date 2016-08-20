@@ -67,10 +67,13 @@ namespace om636
 	template<class T>
 	void swap(event_info<T> &, event_info<T> &);
 
+	template<class T>
+	using receiver_subject = basic_subject<T, const_observer>;
+
 	// receiver_base 
 	template<class T> 
 	class receiver_base
-		: public same_scope< context< T, visual_subject > > 
+		: public same_scope< context< T, receiver_subject > > 
 	{
 		receiver_base(const receiver_base &) = delete;
 		receiver_base & operator=(const receiver_base &) = delete;
@@ -79,7 +82,7 @@ namespace om636
 	
 		// types
 		typedef T value_type;
-		typedef context< value_type, visual_subject > context_type;  
+		typedef context< value_type, receiver_subject > context_type;  
 		typedef same_scope< context_type > base_type; 
 		
 		// resources
